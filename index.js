@@ -7,7 +7,7 @@ global.React = require('react');
 
 // Require the lib to `Relate`. This module will be
 // ignored when bundling for the browser with Browserify/Webpack.
-var Relate = require('./lib/relate');
+var Relate = require('./dist/relate');
 
 exports = module.exports = Relate;
 

@@ -22,20 +22,6 @@ module.exports = function (grunt) {
             all: ['src/*.js']
         },
 
-
-        bundle_jsnext: {
-            dest: 'dist/relate.js',
-
-            options: {
-                namespace : 'Relate',
-                sourceRoot: 'relate/'
-            }
-        },
-
-        cjs_jsnext: {
-            dest: 'tmp/'
-        },
-
         uglify: {
             options: {
                 preserveComments       : 'some',
@@ -64,6 +50,21 @@ module.exports = function (grunt) {
                     port: 9999
                 }
             }
+        },
+
+        '6to5': {
+            options: {
+                // sourceMap: true,
+                modules: 'common'
+            },
+            build: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['**/*.js'],
+                    dest: 'dist/'
+                }]
+            }
         }
     });
 
@@ -72,15 +73,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-bundle-jsnext-lib');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-6to5');
 
     grunt.registerTask('compile', [
         'jshint',
-        'bundle_jsnext',
-        'uglify',
-        'cjs_jsnext',
-        'copy:tmp'
+        '6to5:build',
+        // 'uglify',
+        // 'copy:tmp'
     ]);
 
     grunt.registerTask('default', [
