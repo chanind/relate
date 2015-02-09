@@ -1,9 +1,9 @@
 /* jshint esnext: true */
 
 import RelateMixin from './mixin';
-import RootNode from './root-node';
+import ResourceBundle from './resource-bundle';
 
 export {
 	RelateMixin,
-	RootNode
+	ResourceBundle
 };

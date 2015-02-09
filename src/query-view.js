@@ -1,6 +1,6 @@
 /* jshint esnext: true */
 
-class QueryWrapper {
+export default class Subquery {
 
 	constructor(classObj, queryData) {
 		this.classObj = classObj;
@@ -16,5 +16,3 @@ class QueryWrapper {
 	}
 
 }
-
-export default QueryWrapper;
